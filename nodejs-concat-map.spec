@@ -10,8 +10,8 @@
 
 Name:		%{?scl_prefix}nodejs-concat-map
 Version:	0.0.1
-Release:	1%{?dist}
-Summary:	concatenative mapdashery
+Release:	3%{?dist}
+Summary:	Concatenative mapdashery
 Url:		https://github.com/substack/node-concat-map
 Source0:	https://registry.npmjs.org/%{npm_name}/-/%{npm_name}-%{version}.tgz
 License:	MIT
@@ -25,14 +25,14 @@ ExclusiveArch: %{ix86} x86_64 %{arm} noarch
 %endif
 
 BuildRequires:  %{?scl_prefix}nodejs-devel
-BuildRequires:  nodejs010-runtime
+BuildRequires:  %{?scl_prefix}runtime
 
 %if 0%{?enable_tests}
 BuildRequires:	%{?scl_prefix}npm(tape)
 %endif
 
 %description
-concatenative mapdashery
+Concatenative mapdashery
 
 %prep
 %setup -q -n package
@@ -62,5 +62,11 @@ cp -pr package.json *.js \
 %doc README.markdown LICENSE
 
 %changelog
+* Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 0.0.1-3
+- Use macro in -runtime dependency
+
+* Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 0.0.1-2
+- Rebuilt with updated metapackage
+
 * Tue Dec 01 2015 Tomas Hrcka <thrcka@redhat.com> - 0.0.1-1
 - Initial build
